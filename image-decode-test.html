@@ -1,39 +1,19 @@
 <html>
-<title>image-decoding-testing</title>
-<script>
-var img_new = new Image();
-img_new.src="22.jpg";
-function init() {
-    console.time("canvas 1");
-    var c = document.getElementById("myCanvas1");
-    var ctx = c.getContext("2d");
-    ctx.drawImage(img_new, 0, 0, 100, 100);
-    console.timeEnd("canvas 1");
-    setTimeout(drawImage, 1000);
-}
+<body>
+  <img id="i" src="22.jpg" width="256" height="192"/>
+  <canvas id = "c" width="1024" height="768"></canvas>
+  <p id="t"></p>
+  <script>
+    var c = document.getElementById("c")
+    var ctx = c.getContext("2d")
 
-function drawImage() {
-    console.time("canvas 2");
-    var c = document.getElementById("myCanvas2");
-    var ctx = c.getContext("2d");
-    var img = new Image();
-    img.src="22.jpg";
-    ctx.drawImage(img, 0, 0);
-    console.timeEnd("canvas 2");
-}
-</script>
-<!-- <body onload=draw() id="b1"> -->
-<body onload=init() id="b1">
-<p>Canvas:</p>
-<canvas id="myCanvas1" width="240" height="297" style="border:1px solid #d3d3d3;">
-Your browser does not support the HTML5 canvas tag.
-</canvas>
-<canvas id="myCanvas2" width="1024" height="768" style="border:1px solid #d3d3d3;">
-Your browser does not support the HTML5 canvas tag.
-</canvas>
+    var i = document.getElementById("i")
 
-<!-- <img id="scream" src="11.jpg" alt="The Scream" elementtiming="foobar"> -->
-<p>Image to use:</p>
-
+    console.time("drawImage");
+    i.onload=function() {
+      setTimeout(()=>{ctx.drawImage(i,0,0); document.getElementById("t").textContent="Draw Complete"}, 1000)
+    }
+    console.timeEnd("drawImage");
+  </script>
 </body>
 </html>
