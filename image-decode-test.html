@@ -8,12 +8,10 @@
     var ctx = c.getContext("2d")
 
     var i = document.getElementById("i")
-
-    console.time("drawImage");
     i.onload=function() {
-      setTimeout(()=>{ctx.drawImage(i,0,0); document.getElementById("t").textContent="Draw Complete"}, 1000)
+      setTimeout(()=>{ctx.drawImage(i,0,0); document.getElementById("t").textContent="Draw Complete"}, 0)
     }
-    console.timeEnd("drawImage");
+
   </script>
 </body>
 </html>
